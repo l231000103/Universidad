@@ -66,7 +66,7 @@ El valor PWM del pin 9 va de 0 a 255: cuanto más alto, más rápido gira el mot
 
 ![Evidencia de armado](Practica/Diagrama/armado.jfif)
 
-## Reporte
+## Resultados
 
 Incluye: [Reporte_de_la_practica.pdf](Practica/Reporte/Reporte_de_la_practica.pdf)
 
@@ -78,7 +78,7 @@ Incluye: [Reporte_de_la_practica.pdf](Practica/Reporte/Reporte_de_la_practica.pd
 
 La práctica permitió comprender cómo se controla un motor de corriente directa con Arduino por medio de un puente H: con salidas digitales (`digitalWrite`) se define el sentido de giro y con una señal PWM (`analogWrite`) se regula la velocidad, de modo que cada comando de voz se traduce en una acción del motor. También quedó clara la importancia de alimentar el motor con una fuente externa, ya que los pines del Arduino no pueden entregar la corriente que necesita, y de unir las tierras del Arduino, la pila y el L293D en un negativo común, porque sin esa referencia compartida el puente H no interpretaría correctamente las señales del Arduino.
 
-## Resultados
+## Reporte
 
 [Resultados.pdf](Practica/Resultados/Resultados.pdf)
 
