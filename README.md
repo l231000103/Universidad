@@ -57,6 +57,59 @@ El valor PWM del pin 9 va de 0 a 255: cuanto más alto, más rápido gira el mot
 
 [motorvoz.ino](Practica/codigos/motorvoz.ino)
 
+## Aplicación en App Inventor
+
+La aplicación móvil es la que recibe los comandos de voz. Fue desarrollada en MIT App Inventor y funciona como control remoto del Arduino: reconoce lo que dice el usuario, lo compara con una lista de comandos y envía la orden correspondiente al Arduino por medio de una petición HTTP a través de la red WiFi.
+
+### Componentes utilizados
+
+| Componente | Tipo | Función |
+|---|---|---|
+| `BtnHablar` | Button | Inicia el reconocimiento de voz al presionarlo |
+| `LblEstado` | Label | Muestra la respuesta de la acción ejecutada |
+| `LblComando` | Label | Muestra el texto reconocido y la ruta enviada |
+| `Voz` | SpeechRecognizer | Convierte la voz del usuario en texto |
+| `Habla` | TextToSpeech | Confirma por voz la acción realizada |
+| `Web1` | Web | Envía la petición HTTP al Arduino |
+
+### Funcionamiento de los bloques
+
+La aplicación guarda en la variable global `ip` la dirección del Arduino (`http://192.168.100.42`) y en `conectado` el estado de la conexión.
+
+Al presionar **BtnHablar** se llama a `Voz.GetText`, que abre el reconocimiento de voz del teléfono. Cuando termina, el bloque `Voz.AfterGettingText` recibe el texto y lo compara con cada comando usando el bloque `contains`. Si alguno coincide, se llama al procedimiento `enviar`.
+
+El procedimiento `enviar` recibe dos parámetros, `ruta` y `respuesta`, y realiza cuatro acciones:
+
+1. Muestra la respuesta en `LblEstado`.
+2. La dice en voz alta con `Habla.Speak`.
+3. Arma la dirección completa uniendo la variable global `ip` con la ruta recibida.
+4. Envía la petición al Arduino con `Web1.Get`.
+
+Si el texto reconocido no coincide con ningún comando, el bloque `else` responde por voz **"No te entendí"** y no se envía ninguna petición.
+
+### Comandos de voz reconocidos
+
+| Comando de voz | Ruta enviada | Respuesta de la app |
+|---|---|---|
+| prende el LED | `/led/on` | LED encendido |
+| apaga el LED | `/led/off` | LED apagado |
+| prende la matriz | `/matriz/on` | Matriz encendida |
+| apaga la matriz | `/matriz/off` | Matriz apagada |
+| avanza velocidad baja | `/motor/avanza/baja` | Avanzando velocidad baja |
+| avanza velocidad media | `/motor/avanza/media` | Avanzando velocidad media |
+| avanza velocidad máxima | `/motor/avanza/maxima` | Avanzando velocidad maxima |
+| retrocede velocidad baja | `/motor/retrocede/baja` | Retrocediendo velocidad baja |
+| retrocede velocidad media | `/motor/retrocede/media` | Retrocediendo velocidad media |
+| retrocede velocidad máxima | `/motor/retrocede/maxima` | Retrocediendo velocidad maxima |
+| detener motor | `/motor/detener` | motor detenido |
+
+### Archivos
+
+- [Diseño y bloques de la aplicación (PDF)](Practica/App_Inventor/App_Inventor_CPV.pdf)
+- [Archivo del proyecto (.aia)](Practica/App_Inventor/ControlPorVoz.aia)
+
+> **Nota:** para que la aplicación funcione, el teléfono y el Arduino deben estar conectados a la misma red WiFi, y la variable `ip` debe tener la dirección que el Arduino muestre en el monitor serie.
+
 ## Video del funcionamiento
 
 * [Readme](Practica/Video/Readme.txt)
@@ -80,7 +133,7 @@ La práctica permitió comprender cómo se controla un motor de corriente direct
 
 ## Reporte
 
-[Resultados.pdf](Practica/Reporte/Reporte.pdf)
+[Reporte.pdf](Practica/Reporte/Reporte.pdf)
 
 Este documento contiene la descripción de la práctica, objetivos y procedimientos realizados.
 
