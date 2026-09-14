@@ -105,8 +105,8 @@ Si el texto reconocido no coincide con ningún comando, el bloque `else` respond
 
 ### Archivos
 
-- [Diseño y bloques de la aplicación (PDF)](Practica/App_Inventor/App_Inventor_CPV.pdf)
-- [Archivo del proyecto (.aia)](Practica/App_Inventor/ControlPorVoz.aia)
+- [Diseño y bloques de la aplicación (PDF)](Practica/codigos/App_Inventor/App_Inventor_CPV.pdf)
+- [Archivo del proyecto (.aia)](Practica/codigos/App_Inventor/Control_Por_Voz.aia.zip)
 
 > **Nota:** para que la aplicación funcione, el teléfono y el Arduino deben estar conectados a la misma red WiFi, y la variable `ip` debe tener la dirección que el Arduino muestre en el monitor serie.
 
