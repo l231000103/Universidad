@@ -58,7 +58,7 @@ El valor PWM del pin 9 va de 0 a 255: cuanto más alto, más rápido gira el mot
 [motorvoz.ino](Practica/codigos/motorvoz.ino)
 
 ## Terminal
-[Monitor_Serial.png](Practica/terminal/Monitor_Serial.png)
+[Monitor_Serial.png](Practica/Terminal/Monitor_Serial.png)
 
 ## Aplicación en App Inventor
 
