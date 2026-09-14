@@ -80,7 +80,7 @@ La práctica permitió comprender cómo se controla un motor de corriente direct
 
 ## Reporte
 
-[Resultados.pdf](Practica/Resultados/Resultados.pdf)
+[Resultados.pdf](Practica/Reporte/Reporte.pdf)
 
 Este documento contiene la descripción de la práctica, objetivos y procedimientos realizados.
 
