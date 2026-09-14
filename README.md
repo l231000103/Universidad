@@ -68,7 +68,7 @@ El valor PWM del pin 9 va de 0 a 255: cuanto más alto, más rápido gira el mot
 
 ## Reporte
 
-Incluye: [Reporte.pdf](Practica/Reporte/Reporte.pdf)
+Incluye: [Reporte_de_la_practica.pdf](Practica/Reporte/Reporte_de_la_practica.pdf)
 
 * Gráficas (si aplica)
 * Tablas de datos
