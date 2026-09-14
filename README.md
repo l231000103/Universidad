@@ -121,7 +121,7 @@ Si el texto reconocido no coincide con ningún comando, el bloque `else` respond
 
 ## Resultados
 
-Incluye: [Reporte_de_la_practica.pdf](Practica/Reporte/Reporte_de_la_practica.pdf)
+Incluye: [Resultados.pdf](Practica/Resultados/Resultados.pdf)
 
 * Gráficas (si aplica)
 * Tablas de datos
