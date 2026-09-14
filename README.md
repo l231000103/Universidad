@@ -57,6 +57,9 @@ El valor PWM del pin 9 va de 0 a 255: cuanto más alto, más rápido gira el mot
 
 [motorvoz.ino](Practica/codigos/motorvoz.ino)
 
+## Terminal
+[Monitor_Serial.png](Practica/terminal/Monitor_Serial.png)
+
 ## Aplicación en App Inventor
 
 La aplicación móvil es la que recibe los comandos de voz. Fue desarrollada en MIT App Inventor y funciona como control remoto del Arduino: reconoce lo que dice el usuario, lo compara con una lista de comandos y envía la orden correspondiente al Arduino por medio de una petición HTTP a través de la red WiFi.
