@@ -115,7 +115,7 @@ Si el texto reconocido no coincide con ningún comando, el bloque `else` respond
 
 ## Video del funcionamiento
 
-* [Readme](Practica/Video/Readme.txt)
+* [Readme](Practica/video/Readme.txt)
 * [Ver video en YouTube](https://youtu.be/HVi7jjqaD8g?si=P1OTq7G0HO8tRpMl)
 
 ## Evidencias de armado
