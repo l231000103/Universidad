@@ -42,20 +42,19 @@ El proyecto permite posicionar un servomotor desde una página web. El Arduino U
 
 <img src="Diagrama/diagrama_esquematico.png" width="520">
 
-Archivo editable de Fritzing: [diagrama_servo.fzz](Diagrama/diagrama_servo.fzz)
+Archivo editable de Fritzing: [diagrama_servo.fzz](Diagrama/diagrama_servo_R4WiFi.fzz)
 
-> Fritzing no incluye la pieza del UNO R4 WiFi, así que se usó la del Arduino UNO Rev3, que tiene el mismo formato y la misma distribución de pines.
+> Fritzing no trae el R4 WiFi en su librería oficial, pero existe una pieza hecha por la comunidad (Peter Van Epp, del foro de Fritzing)
 
 ### Conexiones
 
 | Servo MG996R | Conexión | Función |
 |---|---|---|
 | Naranja (señal) | Pin **D9** del Arduino | Recibe el pulso PWM que indica el ángulo |
-| Rojo (V+) | **+** de la fuente externa | Alimenta el motor del servo |
-| Café (GND) | **−** de la fuente externa | Retorno de corriente del servo |
-| — | **GND del Arduino** → **−** de la fuente | **Tierra común**: placa, servo y fuente comparten la misma referencia |
+| Rojo (V+) | **5 V** del Arduino (header POWER) | Alimenta el motor del servo |
+| Café (GND) | **GND** del Arduino (header POWER) | Retorno de corriente y referencia común de la señal |
 
-> ⚠️ El pin de **5 V del Arduino no se conecta al servo**. El MG996R puede consumir más de 1 A al moverse con carga (hasta unos 2.5 A con el eje bloqueado), más de lo que entrega el puerto USB. Sin la tierra común, el servo no reconoce la señal de control.
+> ⚠️ El servo se alimenta desde el regulador de la placa, así que esta conexión sirve para pruebas sin carga o con carga muy ligera. El MG996R puede consumir más de 1 A al moverse con carga (hasta unos 2.5 A con el eje bloqueado), bastante más de lo que entrega el puerto USB, por lo que pueden aparecer caídas de tensión, movimientos erráticos o reinicios de la placa. Para uso continuo o con carga, conviene alimentar el servo con una fuente externa de 5–6 V y unir el **GND de la fuente con el GND del Arduino** (tierra común), ya que sin esa referencia compartida el servo no interpreta la señal de control.
 
 ### Diagrama de bloques
 
