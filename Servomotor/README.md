@@ -13,7 +13,6 @@ El proyecto permite posicionar un servomotor desde una página web. El Arduino U
 - Enviar datos desde el navegador sin recargar la página con `fetch()` de JavaScript.
 - Generar la señal PWM de un servomotor con la librería `Servo`: 50 Hz, pulso de 544 µs (0°) a 2400 µs (180°).
 - Validar datos de entrada (ángulo entre 0 y 180).
-- Alimentar un servo de alto consumo con fuente externa y tierra común.
 - Documentar un circuito en Fritzing.
 
 ## Material utilizado
