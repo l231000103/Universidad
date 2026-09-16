@@ -20,8 +20,6 @@ El proyecto permite posicionar un servomotor desde una página web. El Arduino U
 
 - Arduino UNO R4 WiFi
 - Servomotor MG996R
-- Fuente externa de 4.8 a 6 V para el servo (4 pilas, o un eliminador de 5–6 V y 2 A o más)
-- Protoboard
 - Cables Dupont
 - Cable USB
 - Computadora o celular con navegador web
@@ -34,13 +32,13 @@ El proyecto permite posicionar un servomotor desde una página web. El Arduino U
 | Librería `WiFiS3` | Red WiFi y servidor web (incluida en el paquete de placas UNO R4) |
 | Librería `Servo` | Señal PWM del servomotor |
 | HTML, CSS y JavaScript | Interfaz web servida por el Arduino |
-| Fritzing | Diagramas de protoboard y esquemático |
+| Fritzing | Diagramas esquemáticos |
 | Tinkercad Circuits | Simulación inicial de las conexiones |
 | Navegador web | Uso de la interfaz |
 
 ## Diagrama del circuito
 
-<img src="Diagrama/diagrama_protoboard.png" width="700">
+<img src="Diagrama/diagrama_proto.png" width="700">
 
 <img src="Diagrama/diagrama_esquematico.png" width="520">
 
@@ -61,7 +59,7 @@ Archivo editable de Fritzing: [diagrama_servo.fzz](Diagrama/diagrama_servo.fzz)
 
 ### Diagrama de bloques
 
-<img src="Diagrama/diagrama_bloques.png" width="700">
+<img src="Diagrama/diagrama_bloques1.png" width="700">
 
 ## Código
 
@@ -132,7 +130,7 @@ La práctica permitió comprobar que el Arduino UNO R4 WiFi puede funcionar como
 
 ## Reporte
 
-[Reporte.pdf](Reporte/Reporte.pdf)
+[Reporte_servomotor.pdf](Reporte/Reporte_servomotor.pdf)
 
 Este documento contiene la introducción, los objetivos, el marco teórico, el desarrollo, las capturas de la web funcionando, el análisis de resultados y las conclusiones (general e individual).
 
