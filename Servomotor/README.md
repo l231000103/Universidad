@@ -40,7 +40,7 @@ El proyecto permite posicionar un servomotor desde una página web. El Arduino U
 
 <img src="Diagrama/diagrama_proto.png" width="700">
 
-<img src="Diagrama/diagrama_esquematico.png" width="520">
+<img src="Diagrama/vista_previa_esquematico.png" width="520">
 
 Archivo editable de Fritzing: [diagrama_servo.fzz](Diagrama/diagrama_servo_R4WiFi.fzz)
 
