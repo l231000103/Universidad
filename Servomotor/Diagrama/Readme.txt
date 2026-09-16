@@ -2,7 +2,7 @@ Diagramas de la práctica
 
 diagrama_servo.fzz         -> archivo editable de Fritzing (vistas protoboard y esquemática)
 diagrama_proto.png         -> vista protoboard con etiquetas
-diagrama_esquematico.png   -> vista esquemática
 diagrama_bloques1.png       -> recorrido de la información: navegador, WiFi, Arduino, servo
+vista_previa_esquematico.png   -> vista esquemática
 
-Nota: Fritzing no tiene la pieza del UNO R4 WiFi; se usó la del UNO Rev3 (mismo formato y pines).
+
