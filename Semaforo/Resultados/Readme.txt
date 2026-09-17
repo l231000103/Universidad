@@ -1,0 +1,1 @@
+Resultados_semaforo.pdf -> gráficas del ciclo completo del semáforo (sin solicitud de cruce y con solicitud durante verde/amarillo), tablas de duración de cada estado y del comportamiento del semáforo peatonal según el escenario, y observaciones sobre el funcionamiento del sistema.

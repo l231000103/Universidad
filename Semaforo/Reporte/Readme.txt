@@ -1,0 +1,1 @@
+Reporte_semaforo.pdf -> reporte técnico estilo IEEE: introducción, objetivos, marco teórico (máquinas de estado no bloqueantes con millis() y antirrebote de botones), materiales, desarrollo del circuito y el código, resultados, análisis y conclusiones (general e individual).
