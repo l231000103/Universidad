@@ -1,1 +1,0 @@
-Resultados_practica3.pdf -> gráficas del estado de cada LED (calculadas a partir del código) para las versiones con delay() y con millis(), tablas de datos y observaciones sobre el comportamiento del sistema.
