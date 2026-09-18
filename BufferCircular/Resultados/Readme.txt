@@ -1,0 +1,1 @@
+Resultados_buffercircular.pdf -> gráficas del conteo acumulado y del intervalo entre los 30 eventos registrados por el buffer circular, tablas de indicadores calculados y de los primeros diez eventos, y observaciones sobre el comportamiento del sistema.

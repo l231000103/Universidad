@@ -1,0 +1,1 @@
+Reporte_buffercircular.pdf -> reporte técnico estilo IEEE: introducción, objetivos, marco teórico (interrupciones externas, buffers circulares y antirrebote dentro de una interrupción), materiales, desarrollo del circuito y el código, resultados, análisis y conclusiones (general e individual).
