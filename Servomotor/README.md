@@ -52,8 +52,6 @@ En el video se muestra el funcionamiento del servomotor MG996R controlado desde 
 
 ## Resultados
 
-## Resultados
-
 El sistema respondió correctamente a las peticiones enviadas desde el navegador: al mover el
 control deslizante y presionar **"Mover Servo"**, el ángulo seleccionado se aplicó de inmediato
 al eje del servomotor, confirmando el correcto funcionamiento del flujo
