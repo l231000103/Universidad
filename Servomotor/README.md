@@ -52,12 +52,26 @@ En el video se muestra el funcionamiento del servomotor MG996R controlado desde 
 
 ## Resultados
 
-Incluye: [Resultados.pdf](Resultados/Resultados.pdf)
+El motorreductor respondió correctamente a los comandos de voz de avance, retroceso y paro
+enviados desde la aplicación desarrollada en MIT App Inventor. El sentido de giro se invirtió
+correctamente al cambiar los niveles lógicos de los pines 8 y 7, y el motor se detuvo al poner
+el pin 9 en bajo.
+
+La velocidad se controló mediante una señal PWM en el pin 9, en un rango de 0 a 255. El motor
+comenzó a girar a partir de un valor de 110 debido al rozamiento de los engranajes, por lo que
+se definieron tres niveles de velocidad: **110** (mínima), **180** (media) y **255** (máxima),
+válidos tanto en avance como en retroceso.
+
+Durante las pruebas se identificó y corrigió un error de negativo común: sin unir el GND del
+Arduino, el negativo de la pila y las tierras del L293D, el puente H no interpretaba las señales
+de control aunque el cableado físico fuera correcto. Una vez corregido este punto, el sistema
+respondió de manera consistente a los once comandos programados (encendido/apagado de LED,
+encendido/apagado de matriz, tres niveles de avance, tres niveles de retroceso y paro).
 
 ## Reporte
 
 Reporte formal con introducción, metodologia utilizada, capturas de la web funcionando, análisis de resultados y conclusiones individuales. 
-[Reporte_servomotor.pdf](Reporte/Reporte_servomotor.pdf)
+[Reporte_servomotor.pdf](Reporte/Reporte_Servomotor_Web.pdf)
 
 ## Conclusiones
 
