@@ -23,18 +23,6 @@ El proyecto permite posicionar un servomotor desde una página web. El Arduino U
 - Cable USB
 - Computadora o celular con navegador web
 
-## Herramientas usadas
-
-| Herramienta | Uso |
-|---|---|
-| Arduino IDE 2 | Programación y monitor serie |
-| Librería `WiFiS3` | Red WiFi y servidor web (incluida en el paquete de placas UNO R4) |
-| Librería `Servo` | Señal PWM del servomotor |
-| HTML, CSS y JavaScript | Interfaz web servida por el Arduino |
-| Fritzing | Diagramas esquemáticos |
-| Tinkercad Circuits | Simulación inicial de las conexiones |
-| Navegador web | Uso de la interfaz |
-
 ## Diagrama del circuito
 
 <img src="Diagrama/diagrama_proto.png" width="700">
@@ -45,16 +33,6 @@ Archivo editable de Fritzing: [diagrama_servo.fzz](Diagrama/diagrama_servo_R4WiF
 
 > Fritzing no trae el R4 WiFi en su librería oficial, pero existe una pieza hecha por la comunidad (Peter Van Epp, del foro de Fritzing)
 
-### Conexiones
-
-| Servo MG996R | Conexión | Función |
-|---|---|---|
-| Naranja (señal) | Pin **D9** del Arduino | Recibe el pulso PWM que indica el ángulo |
-| Rojo (V+) | **5 V** del Arduino (header POWER) | Alimenta el motor del servo |
-| Café (GND) | **GND** del Arduino (header POWER) | Retorno de corriente y referencia común de la señal |
-
-> ⚠️ El servo se alimenta desde el regulador de la placa, así que esta conexión sirve para pruebas sin carga o con carga muy ligera. El MG996R puede consumir más de 1 A al moverse con carga (hasta unos 2.5 A con el eje bloqueado), bastante más de lo que entrega el puerto USB, por lo que pueden aparecer caídas de tensión, movimientos erráticos o reinicios de la placa. Para uso continuo o con carga, conviene alimentar el servo con una fuente externa de 5–6 V y unir el **GND de la fuente con el GND del Arduino** (tierra común), ya que sin esa referencia compartida el servo no interpreta la señal de control.
-
 ### Diagrama de bloques
 
 <img src="Diagrama/diagrama_bloques1.png" width="700">
@@ -63,29 +41,6 @@ Archivo editable de Fritzing: [diagrama_servo.fzz](Diagrama/diagrama_servo_R4WiF
 
 - [servo_web.ino](Codigo/servo_web/servo_web.ino): versión final, comentada.
 - [CSW.ino](Codigo/version_inicial/CSW.ino): versión inicial con la que se hicieron las primeras pruebas.
-
-### Funcionamiento
-
-1. Al encender, el servo se coloca en 90° y el Arduino crea la red **Arduino-Servo** (contraseña `12345678`).
-2. Conéctate a esa red y abre **http://192.168.4.1** en el navegador.
-3. Mueve el control deslizante: el servo sigue el valor mientras arrastras. El botón **Mover Servo** también envía el ángulo.
-4. En el monitor serie (9600 baudios) se registra cada ángulo nuevo y el ancho de pulso aplicado.
-
-| Ruta | Acción | Respuesta |
-|---|---|---|
-| `GET /` | Envía la página de control | HTML |
-| `GET /?angle=N` | Mueve el servo y envía la página (funciona sin JavaScript) | HTML |
-| `GET /servo?angle=N` | Mueve el servo en tiempo real | Ángulo aplicado, o `400` si no es válido |
-| `GET /estado` | Consulta el ángulo actual | Ángulo actual |
-| `GET /favicon.ico` | No realiza ninguna acción | `204` |
-
-### Mejoras respecto a la versión inicial
-
-- **Control en tiempo real:** antes había que presionar el botón y la página se recargaba. Ahora el ángulo se envía mientras se arrastra el control, con un solo envío a la vez para no saturar al Arduino.
-- **Ángulos duplicados corregidos:** en el monitor serie cada ángulo aparecía dos veces. La causa era que el navegador pide también el ícono (`/favicon.ico`) y en esa petición incluye la dirección anterior (`Referer: ...?angle=50`). Como el programa buscaba `angle=` en toda la petición, volvía a aplicar el ángulo. Ahora solo se lee la primera línea de la petición.
-- **Validación:** solo se aceptan números enteros de 0 a 180. Los valores inválidos responden `400` y no mueven el servo.
-- El servo solo se escribe cuando el ángulo cambia.
-- La página se guarda como texto fijo en memoria y se envía por bloques.
 
 ## Terminal
 
