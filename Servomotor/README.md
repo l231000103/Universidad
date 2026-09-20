@@ -39,6 +39,7 @@ Archivo editable de Fritzing: [diagrama_servo.fzz](Diagrama/diagrama_servo_R4WiF
 
 ## Código
 
+El código configura el Arduino UNO R4 WiFi como servidor web y permite controlar el ángulo del servomotor MG996R mediante un deslizador. Utiliza peticiones HTTP y fetch() para enviar la posición en tiempo real, validando los ángulos de 0° a 180°.
 - [servo_web.ino](Codigo/servo_web/servo_web.ino): versión final, comentada.
 - [CSW.ino](Codigo/version_inicial/CSW.ino): versión inicial con la que se hicieron las primeras pruebas.
 
@@ -50,6 +51,7 @@ Página funcionando después de enviar 7° (`192.168.4.1/?angle=7`).
 
 ## Video del funcionamiento
 
+En el video se muestra el funcionamiento del servomotor MG996R controlado desde una interfaz web, donde se ajusta su ángulo en tiempo real mediante un deslizador conectado al Arduino UNO R4 WiFi.
 - [Readme](Video/Readme.txt)
 - [Ver video en YouTube](https://youtu.be/AtDGY__b80o)
 
