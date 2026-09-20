@@ -52,21 +52,22 @@ En el video se muestra el funcionamiento del servomotor MG996R controlado desde 
 
 ## Resultados
 
-El motorreductor respondió correctamente a los comandos de voz de avance, retroceso y paro
-enviados desde la aplicación desarrollada en MIT App Inventor. El sentido de giro se invirtió
-correctamente al cambiar los niveles lógicos de los pines 8 y 7, y el motor se detuvo al poner
-el pin 9 en bajo.
+## Resultados
 
-La velocidad se controló mediante una señal PWM en el pin 9, en un rango de 0 a 255. El motor
-comenzó a girar a partir de un valor de 110 debido al rozamiento de los engranajes, por lo que
-se definieron tres niveles de velocidad: **110** (mínima), **180** (media) y **255** (máxima),
-válidos tanto en avance como en retroceso.
+El sistema respondió correctamente a las peticiones enviadas desde el navegador: al mover el
+control deslizante y presionar **"Mover Servo"**, el ángulo seleccionado se aplicó de inmediato
+al eje del servomotor, confirmando el correcto funcionamiento del flujo
+`petición GET → validación → PWM → respuesta`.
 
-Durante las pruebas se identificó y corrigió un error de negativo común: sin unir el GND del
-Arduino, el negativo de la pila y las tierras del L293D, el puente H no interpretaba las señales
-de control aunque el cableado físico fuera correcto. Una vez corregido este punto, el sistema
-respondió de manera consistente a los once comandos programados (encendido/apagado de LED,
-encendido/apagado de matriz, tres niveles de avance, tres niveles de retroceso y paro).
+El servidor HTTP alojado en el Arduino UNO R4 WiFi validó correctamente el rango permitido
+(**0°–180°**), rechazando los valores fuera de ese intervalo y protegiendo así el mecanismo del
+servomotor. La señal PWM generada en el pin 9 a una frecuencia de **50 Hz** resultó adecuada
+para el control del MG996R.
+
+Todo el sistema —placa, red WiFi y servomotor— operó exclusivamente con la alimentación de 5 V
+proporcionada por el puerto USB de la computadora, sin requerir una fuente externa, lo que
+simplificó considerablemente el armado del circuito en comparación con prácticas que involucran
+motores de mayor consumo.
 
 ## Reporte
 
