@@ -19,7 +19,7 @@ Programar y simular en Arduino el control de un motorreductor de corriente direc
 
 ## Diagrama
 Imagenes del Servomotor armado en Tinkercad y en físico.
-(Diagrama/Motorvoz.jpeg)
+![Diagrama del circuito](Practica/Diagrama/Motorvoz.jpeg)
          <img src="Diagrama/armado.jfif" width="200"> 
 ## Código
 
