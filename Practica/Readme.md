@@ -1,18 +1,18 @@
-# Control de motorreductor por voz con Arduino y puente H L293D
+# Control de un servomotor por voz con Arduino y puente H L293D
 
 ## Descripción
 
-El objetivo de esta práctica es controlar un motorreductor por medio de comandos de voz. El Arduino Uno R4 WiFi recibe la orden y, a través del puente H L293D, hace que el motor avance, retroceda o se detenga.
+El objetivo de esta práctica es controlar un servomotor por medio de comandos de voz. El Arduino Uno R4 WiFi recibe la orden y, a través del puente H L293D, hace que el servomotor avance, retroceda o se detenga.
 
 ## Objetivos de aprendizaje
 
-Programar y simular en Arduino el control de un motorreductor de corriente directa usando un puente H (L293D): definir el sentido de giro con las salidas digitales de los pines 7 y 8 (`digitalWrite()`) y regular la velocidad con una señal PWM en el pin 9 (`analogWrite()`), para que el motor avance, retroceda o se detenga según el comando de voz recibido.
+Programar y simular en Arduino el control de un servomotor de corriente directa usando un puente H (L293D): definir el sentido de giro con las salidas digitales de los pines 7 y 8 (`digitalWrite()`) y regular la velocidad con una señal PWM en el pin 9 (`analogWrite()`), para que el motor avance, retroceda o se detenga según el comando de voz recibido.
 
 ## Material utilizado
 
 * Arduino Uno R4 WiFi
 * Puente H (en la simulación de Tinkercad se usó el circuito integrado L293D)
-* Motorreductor
+* Servomotor
 * Pila de 9 V
 * Protoboard
 * Cables Dupont
@@ -31,14 +31,14 @@ Este programa convierte un Arduino UNO R4 WiFi en un servidor web controlado des
 > **Nota:** para que la aplicación funcione, el teléfono y el Arduino deben estar conectados a la misma red WiFi, y la variable `ip` debe tener la dirección que el Arduino muestre en el monitor serie.
 
 ## Video
-En el video se muestra el funcionamiento del motorreductor controlado por comandos de voz mediante Arduino UNO R4 WiFi, puente H L293D y una aplicación desarrollada en MIT App Inventor, demostrando el avance, retroceso, ajuste de velocidad y detención del motor.
+En el video se muestra el funcionamiento del servomotor controlado por comandos de voz mediante Arduino UNO R4 WiFi, puente H L293D y una aplicación desarrollada en MIT App Inventor, demostrando el avance, retroceso, ajuste de velocidad y detención del motor.
 
 * [Readme](video/Readme.txt)
 * [Ver video en YouTube](https://youtu.be/HVi7jjqaD8g?si=P1OTq7G0HO8tRpMl)
 
 ## Resultados
 
-El motorreductor respondió a los comandos de voz enviados desde la app para avanzar, retroceder y detenerse. El sentido de giro se controla invirtiendo los pines 8 y 7 del puente H L293D, y la velocidad, con la señal PWM del pin 9:
+El servomotor respondió a los comandos de voz enviados desde la app para avanzar, retroceder y detenerse. El sentido de giro se controla invirtiendo los pines 8 y 7 del puente H L293D, y la velocidad, con la señal PWM del pin 9:
 
 | Nivel     | PWM (0–255) | Ciclo de trabajo | Comportamiento      |
 |-----------|-------------|------------------|---------------------|
