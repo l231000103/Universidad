@@ -25,7 +25,7 @@ El proyecto simula un semáforo de una calle con cruce peatonal. El semáforo de
 ## Diagrama del circuito
 
 ![Diagrama del circuito](Diagrama/diagrama_semaforo.png)
-<img src="Imagenes/armado_1.png" width="320"> <img src="Imagenes/armado_2.png" width="320">
+<img src="Diagrama/armado_1.png" width="320"> <img src="Diagrama/armado_2.png" width="320">
 
 ## Código
 
