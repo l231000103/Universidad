@@ -29,10 +29,14 @@ El proyecto simula un semáforo de una calle con cruce peatonal. El semáforo de
 
 ## Código
 
+Este es el código de la práctica: 
 [Semaforo_Peatonal.ino](Codigo/Semaforo_Peatonal.ino)
 
 ## Video del funcionamiento
 
+Muestra el circuito armado y en funcionamiento, con el botón presionado en distintos
+momentos del ciclo para comprobar ambos comportamientos: peatonal en rojo sin solicitud, y
+peatonal en verde cuando sí se presionó a tiempo:
 [Ver video en YouTube](https://youtu.be/Fw5TZOuojWg?si=uEQRUvMrNa91d_S3)
 
 ## Resultados
@@ -62,7 +66,7 @@ el botón se presionó a tiempo.
 ## Reporte
 
 
-Incluye: [Reporte_semaforo.pdf](Reporte/Reporte_semaforo.pdf). 
+Incluye: [Reporte_semaforo.pdf](Reporte/Reporte_Semaforo_Peatonal.pdf). 
 
 ## Conclusiones
 
