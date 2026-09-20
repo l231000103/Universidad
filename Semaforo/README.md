@@ -25,84 +25,48 @@ El proyecto simula un semáforo de una calle con cruce peatonal. El semáforo de
 ## Diagrama del circuito
 
 ![Diagrama del circuito](Diagrama/diagrama_semaforo.png)
-
-### Conexiones
-
-| Elemento | Pin del Arduino | Función |
-|---|---|---|
-| LED rojo (semáforo peatonal) | Pin 12 | Encendido casi todo el tiempo; se apaga cuando se atiende el cruce |
-| LED verde (semáforo peatonal) | Pin 11 | Se enciende solo cuando se atiende una solicitud de cruce |
-| LED rojo (semáforo autos) | Pin 10 | Encendido durante el estado "rojo" (6 s) |
-| LED amarillo (semáforo autos) | Pin 9 | Encendido durante el estado "amarillo" (2 s) |
-| LED verde (semáforo autos) | Pin 8 | Encendido durante el estado "verde" (6 s) |
-| Pushbutton | Pin 2 (`INPUT_PULLUP`) | Solicita el cruce peatonal; presionado = LOW |
-
-### Función de cada componente
-
-- **Arduino Uno R4 WiFi:** ejecuta la máquina de estados del semáforo y lee el botón.
-- **Semáforo de autos (verde/amarillo/rojo):** cambia de estado solo, siguiendo siempre el mismo ciclo de tiempos.
-- **Semáforo peatonal (rojo/verde):** normalmente en rojo; solo pasa a verde si hubo una solicitud pendiente cuando el semáforo de autos llega a rojo.
-- **Pushbutton:** permite a un peatón solicitar el cruce; el programa filtra los rebotes eléctricos del botón antes de tomar la lectura como válida.
-- **Resistencias de 220 Ω:** limitan la corriente de cada LED.
-- **Protoboard:** permite armar el circuito sin soldar los componentes.
+<img src="Imagenes/armado_1.png" width="320"> <img src="Imagenes/armado_2.png" width="320">
 
 ## Código
 
 [Semaforo_Peatonal.ino](Codigo/Semaforo_Peatonal.ino)
 
-### Máquina de estados del semáforo de autos
-
-| Estado | Duración | LED de autos encendido |
-|---|---|---|
-| 0 — Verde | 6000 ms | Verde (pin 8) |
-| 1 — Amarillo | 2000 ms | Amarillo (pin 9) |
-| 2 — Rojo | 6000 ms | Rojo (pin 10) |
-
-El programa guarda en `inicioEstado` el momento (`millis()`) en que empezó el estado actual, y compara contra `ahora - inicioEstado` para saber cuándo pasar al siguiente estado, sin usar `delay()` en ningún momento.
-
-### Lectura del botón y solicitud de cruce
-
-Cada vuelta del `loop()` se lee el botón (`digitalRead(boton)`). Para evitar que los rebotes eléctricos del botón se cuenten como varias pulsaciones, el programa solo acepta un cambio de estado del botón si se mantuvo estable durante al menos 40 ms (`antirrebote`). Si el botón se presiona (pasa a LOW) mientras el semáforo de autos está en verde o en amarillo (estado 0 o 1), se activa la bandera `solicitudPeaton = true`; presionarlo durante el rojo no hace nada, porque en ese momento el cruce ya se está resolviendo o ya se resolvió.
-
-### Atención de la solicitud
-
-Cuando el semáforo de autos termina el amarillo y pasa a rojo, el programa revisa `solicitudPeaton`: si estaba activa, enciende el LED verde peatonal y apaga el rojo peatonal; si no hubo solicitud, el semáforo peatonal se queda en rojo. En cualquier caso, `solicitudPeaton` se reinicia a `false`, y cuando el semáforo de autos vuelve a verde, el peatonal siempre regresa a rojo, haya cruzado alguien o no.
-
-## Terminal
-
-Ver [Readme](Terminal/Readme.txt): este programa no usa el monitor serie.
-
 ## Video del funcionamiento
 
 [Ver video en YouTube](https://youtu.be/Fw5TZOuojWg?si=uEQRUvMrNa91d_S3)
 
-## Evidencias de armado
-
-<img src="Imagenes/armado_1.png" width="320"> <img src="Imagenes/armado_2.png" width="320">
-
 ## Resultados
 
-Incluye: [Resultados_semaforo.pdf](Resultados/Resultados_semaforo.pdf). Contiene las gráficas de tiempo del ciclo completo (sin solicitud de cruce y con solicitud durante verde/amarillo), las tablas de duración de cada estado y del comportamiento del semáforo peatonal según el escenario, y las observaciones sobre el funcionamiento del sistema.
+Las pruebas se realizaron el 15 de septiembre de 2026. El comportamiento del semáforo se
+determinó a partir del código fuente (`Codigo/Semaforo_Peatonal.ino`) y se verificó en el
+armado físico, presionando el botón en distintos momentos del ciclo.
+
+El semáforo de autos sigue siempre el mismo ciclo de **14000 ms** (6000 ms en verde, 2000 ms
+en amarillo y 6000 ms en rojo), sin detenerse ni alterarse por el botón. El semáforo peatonal,
+en cambio, depende de si se presionó el botón durante el verde o el amarillo de los autos:
+
+- **Sin solicitud de cruce:** el peatonal permanece en rojo durante todo el ciclo (0–14000 ms).
+- **Con solicitud durante verde o amarillo:** el peatonal está en rojo de 0 a 8000 ms y cambia
+  a verde de 8000 a 14000 ms, exactamente mientras los autos están en rojo.
+- **Solicitud presionada durante el rojo de autos:** no tiene ningún efecto, ya que en ese
+  momento la solicitud ya se resolvió o no hay forma segura de atenderla.
+
+La solicitud de cruce se guarda en la variable `solicitudPeaton` y se atiende una sola vez,
+justo cuando el semáforo de autos pasa de amarillo a rojo; después la variable se reinicia,
+por lo que una sola pulsación del botón solo genera un cruce peatonal. El antirrebote por
+software (**40 ms**) evitó que una sola pulsación física se interpretara como varias
+solicitudes. El armado físico y el video de la práctica confirmaron visualmente este
+comportamiento: el semáforo de autos corre solo, y el peatonal solo se pone en verde cuando
+el botón se presionó a tiempo.
+
+## Reporte
+
+
+Incluye: [Reporte_semaforo.pdf](Reporte/Reporte_semaforo.pdf). 
 
 ## Conclusiones
 
 La práctica permitió implementar un semáforo de autos y un semáforo peatonal funcionando de forma coordinada, usando una sola máquina de estados no bloqueante basada en `millis()`. El semáforo de autos nunca se detiene ni cambia su ritmo, sin importar si el botón se presiona o no, lo que confirma que su ciclo está desacoplado de la lógica del peatón. La solicitud de cruce se guarda en una variable (`solicitudPeaton`) y solo se atiende cuando el semáforo de autos llega a rojo, que es el único momento seguro para habilitar el paso; presionar el botón durante el rojo no tiene ningún efecto, porque en ese momento el cruce ya se resolvió o se está resolviendo. El antirrebote por software (40 ms) evitó que una sola pulsación se registrara como varias, y el uso de `INPUT_PULLUP` simplificó la conexión del botón al no requerir una resistencia externa. En conjunto, la práctica muestra cómo combinar una máquina de estados con la lectura de una entrada externa sin bloquear el programa ni poner en riesgo la seguridad del cruce.
 
-## Reporte
 
-Incluye: [Reporte_semaforo.pdf](Reporte/Reporte_semaforo.pdf). Reporte completo de la práctica: introducción, objetivos, marco teórico, materiales, desarrollo, resultados, análisis y conclusiones.
 
-## Estructura de carpetas
-
-```
-Semaforo/
-├── README.md
-├── Codigo/
-│   └── Semaforo_Peatonal.ino
-├── Diagrama/                 ← esquemático (Tinkercad)
-├── Imagenes/                 ← fotos del armado
-├── Terminal/                 ← el programa no usa monitor serie
-├── Resultados/                ← gráficas y tablas del ciclo del semáforo
-├── Reporte/                   ← reporte de la práctica
-└── Video/                     ← enlace al video
-```
