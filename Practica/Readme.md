@@ -19,7 +19,7 @@ Programar y simular en Arduino el control de un motorreductor de corriente direc
 
 ## Diagrama del circuito
 
-![Diagrama del circuito](Practica/Diagrama/Motorvoz.jpeg)
+![Diagrama del circuito](Diagrama/Motorvoz.jpeg)
 
 ### Conexiones
 
@@ -55,10 +55,10 @@ El valor PWM del pin 9 va de 0 a 255: cuanto más alto, más rápido gira el mot
 
 ## Código
 
-[motorvoz.ino](Practica/codigos/motorvoz.ino)
+[motorvoz.ino](codigos/motorvoz.ino)
 
 ## Terminal
-[Monitor_Serial.png](Practica/Terminal/Monitor_Serial.png)
+[Monitor_Serial.png](Terminal/Monitor_Serial.png)
 
 ## Aplicación en App Inventor
 
@@ -108,23 +108,23 @@ Si el texto reconocido no coincide con ningún comando, el bloque `else` respond
 
 ### Archivos
 
-- [Diseño y bloques de la aplicación (PDF)](Practica/codigos/App_Inventor/App_Inventor_CPV.pdf)
-- [Archivo del proyecto (.aia)](Practica/codigos/App_Inventor/Control_Por_Voz.aia.zip)
+- [Diseño y bloques de la aplicación (PDF)](codigos/App_Inventor/App_Inventor_CPV.pdf)
+- [Archivo del proyecto (.aia)](codigos/App_Inventor/Control_Por_Voz.aia.zip)
 
 > **Nota:** para que la aplicación funcione, el teléfono y el Arduino deben estar conectados a la misma red WiFi, y la variable `ip` debe tener la dirección que el Arduino muestre en el monitor serie.
 
 ## Video del funcionamiento
 
-* [Readme](Practica/video/Readme.txt)
+* [Readme](video/Readme.txt)
 * [Ver video en YouTube](https://youtu.be/HVi7jjqaD8g?si=P1OTq7G0HO8tRpMl)
 
 ## Evidencias de armado
 
-![Evidencia de armado](Practica/Diagrama/armado.jfif)
+![Evidencia de armado](Diagrama/armado.jfif)
 
 ## Resultados
 
-Incluye: [Resultados.pdf](Practica/Resultados/Resultados.pdf)
+Incluye: [Resultados.pdf](Resultados/Resultados.pdf)
 
 * Gráficas (si aplica)
 * Tablas de datos
@@ -136,7 +136,7 @@ La práctica permitió comprender cómo se controla un motor de corriente direct
 
 ## Reporte
 
-[Reporte.pdf](Practica/Reporte/Reporte.pdf)
+[Reporte.pdf](Reporte/Reporte.pdf)
 
 Este documento contiene la descripción de la práctica, objetivos y procedimientos realizados.
 
