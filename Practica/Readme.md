@@ -31,7 +31,7 @@ Este programa convierte un Arduino UNO R4 WiFi en un servidor web controlado des
 > **Nota:** para que la aplicación funcione, el teléfono y el Arduino deben estar conectados a la misma red WiFi, y la variable `ip` debe tener la dirección que el Arduino muestre en el monitor serie.
 
 ## Video
-El video muestra todo 
+En el video se muestra el funcionamiento del motorreductor controlado por comandos de voz mediante Arduino UNO R4 WiFi, puente H L293D y una aplicación desarrollada en MIT App Inventor, demostrando el avance, retroceso, ajuste de velocidad y detención del motor.
 
 * [Readme](video/Readme.txt)
 * [Ver video en YouTube](https://youtu.be/HVi7jjqaD8g?si=P1OTq7G0HO8tRpMl)
@@ -55,10 +55,9 @@ El motorreductor respondió a los comandos de voz enviados desde la app para ava
 
 ## Reporte
 
+Reporte formal con introducción, metodologia utilizada, capturas de la web funcionando, análisis de resultados y conclusiones individuales. 
+
 [Reporte.pdf](Reporte/Reporte.pdf)
-
-Este documento contiene introducción, la metodología utilizada, el análisis de los resultados y las conclusiones obtenidas durante la práctica.
-
 
 ## Conclusiones
 
