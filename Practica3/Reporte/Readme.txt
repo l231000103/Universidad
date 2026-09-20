@@ -1,1 +1,1 @@
-Reporte_practica3.pdf -> reporte técnico estilo IEEE: introducción, objetivos, marco teórico, materiales, desarrollo del circuito y el código, resultados, análisis y conclusiones (general e individual), comparando las versiones con delay() y con millis().
+Reporte formal con introducción, metodologia utilizada, capturas de la web funcionando, análisis de resultados y conclusiones individuales.
