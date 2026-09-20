@@ -32,6 +32,7 @@ El proyecto permite posicionar un servomotor desde una página web. El Arduino U
 Archivo editable de Fritzing: [diagrama_servo.fzz](Diagrama/diagrama_servo_R4WiFi.fzz)
 
 > Fritzing no trae el R4 WiFi en su librería oficial, pero existe una pieza hecha por la comunidad (Peter Van Epp, del foro de Fritzing)
+<img src="Diagrama/armado_1.jpg" width="260"> <img src="Diagrama/armado_2.jpg" width="260"> <img src="Diagrama/armado_3.jpg" width="260">
 
 ### Diagrama de bloques
 
@@ -54,10 +55,6 @@ Página funcionando después de enviar 7° (`192.168.4.1/?angle=7`).
 En el video se muestra el funcionamiento del servomotor MG996R controlado desde una interfaz web, donde se ajusta su ángulo en tiempo real mediante un deslizador conectado al Arduino UNO R4 WiFi.
 - [Readme](Video/Readme.txt)
 - [Ver video en YouTube](https://youtu.be/AtDGY__b80o)
-
-## Evidencias de armado
-
-<img src="Imagenes/armado_1.jpg" width="260"> <img src="Imagenes/armado_2.jpg" width="260"> <img src="Imagenes/armado_3.jpg" width="260">
 
 ## Resultados
 
