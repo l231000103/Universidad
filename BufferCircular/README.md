@@ -55,7 +55,7 @@ presionar el pulsador (pin D2) mientras la matriz LED ejecutaba su animación.
 ## Reporte
 
 Reporte formal con introducción, metodologia utilizada, capturas de la web funcionando, análisis de resultados y conclusiones individuales.
-Incluye: [Reporte_buffercircular.pdf](Reporte/Reporte_buffercircular.pdf). 
+Incluye: [Reporte_buffercircular.pdf](Reporte/Reporte_Buffer_Circular.pdf). 
 
 ## Conclusiones
 
