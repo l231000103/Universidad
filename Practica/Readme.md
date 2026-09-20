@@ -20,39 +20,6 @@ Programar y simular en Arduino el control de un motorreductor de corriente direc
 ## Diagrama del circuito
 
 ![Diagrama del circuito](Diagrama/Motorvoz.jpeg)
-
-### Conexiones
-
-| Elemento | Pata del L293D | Función |
-|---|---|---|
-| 5 V del Arduino | 16 (VCC1) | Alimenta la parte del L293D que recibe las órdenes |
-| Positivo (+) de la pila de 9 V | 8 (VCC2) | Alimenta el motor |
-| Pin 9 del Arduino | 1 (Enable 1) | Controla la velocidad del motor (PWM) y permite detenerlo |
-| Pin 8 del Arduino | 2 (Entrada 1) | Junto con el pin 7, define el sentido de giro |
-| Pin 7 del Arduino | 7 (Entrada 2) | Junto con el pin 8, define el sentido de giro |
-| Terminales del motor | 3 y 6 (Salidas 1 y 2) | Una terminal en cada pata; por ahí llega la energía al motor |
-| GND del Arduino y negativo (−) de la pila | 4, 5, 12 y 13 (GND) | Tierra común para que todo comparta la misma referencia eléctrica |
-| Negativo común (GND) | 9, 10 y 15 | Mantienen apagado el segundo canal del L293D, que no se usa |
-| Sin conectar | 11 y 14 | Salidas del segundo canal |
-
-### Función de cada componente
-
-* **Arduino Uno R4 WiFi:** ejecuta el programa y envía las órdenes para que el motor avance, retroceda o se detenga.
-* **Puente H L293D:** recibe las órdenes del Arduino y controla la energía que llega al motor para cambiar su velocidad y sentido de giro.
-* **Motorreductor:** convierte la energía eléctrica en movimiento. Sus engranajes reducen la velocidad y aumentan la fuerza de giro.
-* **Pila de 9 V:** proporciona la energía para mover el motor.
-* **Protoboard:** permite unir los componentes con cables sin soldarlos.
-
-### Tabla de funcionamiento
-
-| Acción | Pin 9 (pata 1) | Pin 8 (pata 2) | Pin 7 (pata 7) |
-|---|---|---|---|
-| Avanzar | PWM | HIGH | LOW |
-| Retroceder | PWM | LOW | HIGH |
-| Detener | 0 (LOW) | Cualquiera | Cualquiera |
-
-El valor PWM del pin 9 va de 0 a 255: cuanto más alto, más rápido gira el motor. El sentido que corresponde a "avanzar" depende de cómo se conectaron las terminales del motor en las patas 3 y 6; si gira al revés, basta con intercambiarlas.
-
 ## Código
 
 [motorvoz.ino](codigos/motorvoz.ino)
