@@ -44,12 +44,6 @@ El código configura el Arduino UNO R4 WiFi como servidor web y permite controla
 - [servo_web.ino](Codigo/servo_web/servo_web.ino): versión final, comentada.
 - [CSW.ino](Codigo/version_inicial/CSW.ino): versión inicial con la que se hicieron las primeras pruebas.
 
-## Interfaz web
-
-<img src="Web/interfaz_web.png" width="700">
-
-Página funcionando después de enviar 7° (`192.168.4.1/?angle=7`).
-
 ## Video del funcionamiento
 
 En el video se muestra el funcionamiento del servomotor MG996R controlado desde una interfaz web, donde se ajusta su ángulo en tiempo real mediante un deslizador conectado al Arduino UNO R4 WiFi.
