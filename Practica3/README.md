@@ -70,7 +70,7 @@ sobre el mismo circuito de 3 LEDs (verde, amarillo y rojo cada 500/1000/1500 ms)
 ## Reporte
 
 Reporte formal con introducción, metodologia utilizada, capturas de la web funcionando, análisis de resultados y conclusiones individuales. 
-[Reporte_practica3.pdf](Reporte/Reporte_Delay_Millis(1).pdf)
+[Reporte_practica3.pdf](Reporte/Reporte_Delay_Millis (1).pdf)
 
 ## Conclusiones
 
