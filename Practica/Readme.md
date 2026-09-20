@@ -57,7 +57,7 @@ El motorreductor respondió a los comandos de voz enviados desde la app para ava
 
 Reporte formal con introducción, metodologia utilizada, capturas de la web funcionando, análisis de resultados y conclusiones individuales. 
 
-[Reporte.pdf](Reporte/Reporte.pdf)
+[Reporte.pdf](Reporte.pdf)
 
 ## Conclusiones
 
