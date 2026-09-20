@@ -65,7 +65,7 @@ el botón se presionó a tiempo.
 
 ## Reporte
 
-
+Reporte formal con introducción, metodologia utilizada, capturas de la web funcionando, análisis de resultados y conclusiones individuales. 
 Incluye: [Reporte_semaforo.pdf](Reporte/Reporte_Semaforo_Peatonal.pdf). 
 
 ## Conclusiones
