@@ -24,6 +24,7 @@ Esta práctica compara dos formas de manejar tiempos en Arduino: la función `de
 ## Diagrama del circuito
 
 ![Diagrama del circuito](Diagrama/diagrama_leds.png)
+<img src="Diagrama/armado_1.png" width="320"> <img src="Diagrama/armado_2.png" width="320"> <img src="Diagrama/armado_3.png" width="320">
 
 El mismo circuito se usó para las dos versiones del código (delay y millis).
 
@@ -32,22 +33,6 @@ El mismo circuito se usó para las dos versiones del código (delay y millis).
 ![Diagrama de bloques](Diagrama/diagrama_bloques_practica3.png)
 
 Solo la versión con `millis()` envía datos por el monitor serie (el mensaje al encender el LED rojo); la versión con `delay()` usa el mismo circuito y las mismas salidas, pero no imprime nada en el monitor serie.
-
-### Conexiones
-
-| Elemento | Pin del Arduino | Función |
-|---|---|---|
-| LED verde (ánodo, a través de resistencia de 330 Ω) | Pin 9 | Parpadea cada 500 ms |
-| LED amarillo (ánodo, a través de resistencia de 330 Ω) | Pin 10 | Parpadea cada 1000 ms |
-| LED rojo (ánodo, a través de resistencia de 330 Ω) | Pin 11 | Parpadea cada 1500 ms |
-| Cátodo de los 3 LEDs | GND | Retorno común de corriente |
-
-### Función de cada componente
-
-- **Arduino Uno R4 WiFi:** ejecuta el programa y controla el encendido y apagado de los tres LEDs.
-- **LEDs (verde, amarillo, rojo):** indicadores visuales, cada uno con su propio intervalo de tiempo.
-- **Resistencias de 330 Ω:** limitan la corriente que pasa por cada LED para protegerlo.
-- **Protoboard:** permite armar el circuito sin soldar los componentes.
 
 ## Código
 
@@ -62,58 +47,32 @@ Enciende y apaga cada LED uno por uno, de forma secuencial: verde medio segundo,
 
 Guarda en una variable (`tiempoVerde`, `tiempoAmarillo`, `tiempoRojo`) el último momento en que cada LED cambió de estado, y en cada vuelta del `loop()` compara `millis()` contra ese valor. Así, cada LED cambia de estado en su propio intervalo (500, 1000 y 1500 ms) sin esperar a los demás ni bloquear el programa, por lo que los tres pueden estar encendidos o parpadeando al mismo tiempo de forma independiente. Además, cada vez que el LED rojo se enciende, se envía por el monitor serie (9600 baudios) el mensaje `"Ximena la mas chambeadora"`.
 
-## Terminal
-
-![Monitor serie](Terminal/monitor_serial.png)
-
-[Monitor_serial](Terminal/monitor_serial.png): captura del monitor serie (Arduino IDE 2) ejecutando `millis.ino`, mostrando el mensaje `"Ximena la mas chambeadora"` repetido cada vez que se enciende el LED rojo (cada 3000 ms). La versión con `delay()` no imprime nada en el monitor serie.
-
 ## Video del funcionamiento
 
+Muestra el mismo circuito ejecutando ambas versiones: con `delay()` los LEDs
+parpadean en secuencia, uno a la vez; con `millis()` lo hacen de forma independiente,
+pudiendo coincidir dos encendidos a la vez.
 - Versión con `delay()`: [Ver video en YouTube](https://youtu.be/zXMxCz9uoMA?si=Up6rGS999ETC38SV)
 - Versión con `millis()`: [Ver video en YouTube](https://youtu.be/gIHIuMy8Fag?si=nVLI3jlfM2oAtlDP)
 
-## Evidencias de armado
-
-<img src="Imagenes/armado_1.png" width="320"> <img src="Imagenes/armado_2.png" width="320"> <img src="Imagenes/armado_3.png" width="320">
-
 ## Resultados
 
-Incluye: [Resultados_practica3.pdf](Resultados/Resultados_practica3.pdf)
+Las pruebas se realizaron el 15 de septiembre de 2026, comparando `Delay.ino` y `millis.ino`
+sobre el mismo circuito de 3 LEDs (verde, amarillo y rojo cada 500/1000/1500 ms).
 
-Contiene las gráficas del estado de cada LED (calculadas a partir del código) para las versiones con `delay()` y con `millis()`, las tablas de datos y las observaciones del comportamiento del sistema.
+- **delay():** los LEDs se encienden uno a la vez, nunca al mismo tiempo; el ciclo dura
+  exactamente 3000 ms y se repite en ese orden.
+- **millis():** cada LED cambia de estado en su propio intervalo sin esperar a los demás; verde
+  y rojo llegan a coincidir encendidos (2500–3000 ms), algo que `delay()` nunca permite.
+- Solo `millis()` envía por el monitor serie el mensaje **"Ximena la mas chambeadora"**, justo
+  al encender el LED rojo (cada 3000 ms); `delay()` no usa el monitor serie.
 
-Comparación entre las dos formas de trabajar, usando el mismo circuito y los mismos intervalos (500 ms, 1000 ms y 1500 ms):
+## Reporte
 
-| Aspecto | delay() | millis() |
-|---|---|---|
-| Ejecución | Bloqueante: detiene todo el programa mientras espera | No bloqueante: el `loop()` sigue corriendo mientras cuenta el tiempo |
-| LEDs simultáneos | No; cada LED espera su turno, uno tras otro | Sí; los tres LEDs parpadean en su propio intervalo al mismo tiempo |
-| Uso del monitor serie u otras tareas mientras se espera | No es posible | Sí es posible, como el mensaje que se envía al encender el LED rojo |
-| Complejidad del código | Más simple | Requiere llevar el control del tiempo con variables por cada evento |
+Reporte formal con introducción, metodologia utilizada, capturas de la web funcionando, análisis de resultados y conclusiones individuales. 
+[Reporte_practica3.pdf](Reporte/Reporte_Delay_Millis.pdf)
 
 ## Conclusiones
 
 La práctica permitió comparar de forma directa dos maneras de manejar el tiempo en Arduino. Con `delay()` el programa es más sencillo de escribir, pero al detener por completo la ejecución impide que varios eventos ocurran de forma independiente: los tres LEDs terminan parpadeando uno después del otro en vez de simultáneamente. Con `millis()` el código es un poco más complejo, porque hay que llevar el registro del último cambio de cada LED en una variable, pero a cambio el programa nunca se detiene y cada LED respeta su propio intervalo sin afectar a los demás, lo que además permite hacer otras tareas al mismo tiempo, como enviar un mensaje por el monitor serie. Esto deja claro por qué `millis()` es la opción recomendada cuando un proyecto necesita manejar varios tiempos o eventos a la vez.
 
-## Reporte
-
-[Reporte_practica3.pdf](Reporte/Reporte_practica3.pdf)
-
-Reporte técnico estilo IEEE (PDF): introducción, objetivos, marco teórico, materiales, desarrollo del circuito y el código, resultados, análisis y conclusiones (general e individual), comparando las versiones con `delay()` y con `millis()`.
-
-## Estructura de carpetas
-
-```
-Practica3/
-├── README.md
-├── Codigo/
-│   ├── Delay/Delay.ino
-│   └── Millis/millis.ino
-├── Diagrama/                 ← esquemático (Tinkercad)
-├── Imagenes/                 ← fotos del armado
-├── Terminal/                 ← mensaje del monitor serie (versión millis)
-├── Resultados/                ← comparación delay vs. millis
-├── Reporte/                   ← reporte de la práctica
-└── Video/                     ← enlaces a los videos (delay y millis)
-```
