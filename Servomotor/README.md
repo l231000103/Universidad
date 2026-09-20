@@ -42,12 +42,6 @@ Archivo editable de Fritzing: [diagrama_servo.fzz](Diagrama/diagrama_servo_R4WiF
 - [servo_web.ino](Codigo/servo_web/servo_web.ino): versión final, comentada.
 - [CSW.ino](Codigo/version_inicial/CSW.ino): versión inicial con la que se hicieron las primeras pruebas.
 
-## Terminal
-
-<img src="Terminal/monitor_serial.png" width="600">
-
-[Monitor_Serial](Terminal/monitor_serial.png): registro de la prueba con la versión inicial, donde se ve la red creada, la IP 192.168.4.1 y los ángulos recibidos (cada uno duplicado por el error descrito arriba).
-
 ## Interfaz web
 
 <img src="Web/interfaz_web.png" width="700">
@@ -67,43 +61,14 @@ Página funcionando después de enviar 7° (`192.168.4.1/?angle=7`).
 
 Incluye: [Resultados.pdf](Resultados/Resultados.pdf)
 
-- Gráficas: [ángulo vs. ancho de pulso](Resultados/grafica_angulo_pulso.png), [secuencia de ángulos](Resultados/grafica_secuencia_angulos.png), [procesamientos por ángulo](Resultados/grafica_procesamientos.png)
-- Tablas de datos: [datos_practica.csv](Resultados/datos_practica.csv)
-- Observaciones sobre el comportamiento del sistema
+## Reporte
 
-| Ángulo enviado | 50° | 25° | 124° | 12° | 166° | 83° | 124° | 167° | 7° |
-|---|---|---|---|---|---|---|---|---|---|
-| Pulso (µs) | 1059 | 801 | 1822 | 667 | 2255 | 1399 | 1822 | 2265 | 616 |
-
-El servo se posicionó en cada ángulo enviado desde la página, entre 7° y 167°, en ambos sentidos de giro.
+Reporte formal con introducción, metodologia utilizada, capturas de la web funcionando, análisis de resultados y conclusiones individuales. 
+[Reporte_servomotor.pdf](Reporte/Reporte_servomotor.pdf)
 
 ## Conclusiones
 
 La práctica permitió comprobar que el Arduino UNO R4 WiFi puede funcionar como punto de acceso y servidor web sin otra red ni aplicaciones, y que la librería `Servo` traduce cada ángulo en el ancho de pulso adecuado dentro de una señal de 50 Hz. Revisar el monitor serie ayudó a detectar un error que no se notaba en el movimiento del servo: el navegador hace peticiones adicionales, como la del ícono, y el servidor debe analizar solo la ruta de cada petición. Con esa corrección y el envío en tiempo real, el control es más fluido y confiable. También quedó claro que un servo de alto par como el MG996R debe alimentarse con una fuente externa y compartir tierra con el Arduino.
 
-## Reporte
 
-[Reporte_servomotor.pdf](Reporte/Reporte_servomotor.pdf)
 
-Este documento contiene la introducción, los objetivos, el marco teórico, el desarrollo, las capturas de la web funcionando, el análisis de resultados y las conclusiones (general e individual).
-
-- Reporte técnico estilo IEEE (PDF)
-- Datos CSV
-- Diagramas adicionales
-
-## Estructura de carpetas
-
-```
-Servomotor/
-├── README.md
-├── Codigo/
-│   ├── servo_web/servo_web.ino      ← versión final
-│   └── version_inicial/CSW.ino
-├── Diagrama/                        ← Fritzing (.fzz), protoboard, esquemático y bloques
-├── Imagenes/                        ← fotos del armado
-├── Terminal/                        ← captura del monitor serie
-├── Web/                             ← captura de la interfaz web
-├── Resultados/                      ← Resultados.pdf, gráficas y CSV
-├── Reporte/                         ← Reporte.pdf
-└── Video/                           ← enlace al video
-```
