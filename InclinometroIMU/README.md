@@ -119,7 +119,7 @@ Inclinacion: centrado | 0 grados | leve | Motor: detenido | PWM: 0 %
 
 Reporte formal con introducción, metodología, evidencia del armado y del Monitor serie, análisis de resultados y conclusiones individuales.
 
-[Reporte_Inclinometro_IMU.pdf](Reporte/Reporte_Inclinometro_IMU.pdf)
+[Reporte_Unidad_Medicion_Inercial_MPU6050.pdf](Reporte/Reporte_Unidad_Medicion_Inercial_MPU6050.pdf)
 
 ## Conclusiones
 
