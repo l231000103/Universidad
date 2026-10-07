@@ -31,7 +31,6 @@ El sistema se comporta así:
 - Motorreductor de CD
 - Pila de 9 V
 - Resistencia de 10 kΩ entre ENA y GND (mantiene el motor deshabilitado mientras el Arduino arranca o se reinicia)
-- Protoboard
 - Cables Dupont
 
 Software: Arduino IDE 2, librerías `Wire` y `Arduino_LED_Matrix` (incluidas en el paquete de la UNO R4) y Monitor serie a 115200 baudios.
