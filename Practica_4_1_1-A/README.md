@@ -99,21 +99,6 @@ Se dejan puestos el jumper de ENA y el jumper 5V-EN.
 
 - [Practica_4_1_1_A.ino](Codigo/Practica_4_1_1_A/Practica_4_1_1_A.ino): sketch completo con la clase `Relevador` y los dos objetos.
 
-| Método | Qué hace |
-|--------|----------|
-| `iniciar()` | Escribe el nivel de apagado, configura el pin como salida y deja el actuador apagado |
-| `encender()` | Enciende solo si ya pasó el tiempo mínimo. Regresa `true` si lo logró y `false` si no |
-| `apagar()` | Apaga solo si ya pasó el tiempo mínimo. Regresa `true` si lo logró y `false` si no |
-| `estaEncendido()` | Informa el estado actual |
-| `faltaMs()` | Indica cuánto falta para poder conmutar otra vez |
-
-```cpp
-Relevador motor(7, false);   // L298N IN1 - activo en ALTO
-Relevador led  (6, true);    // LED al revés - activo en BAJO
-```
-
-> **Nota:** el programa principal nunca usa `digitalWrite()` directamente y no usa `delay()`: todo pasa por la clase.
-
 ## Video del funcionamiento
 
 - [Video](Video/Readme.txt)
@@ -141,32 +126,6 @@ LED:   APAGADO
 - **Prueba de seguridad 1 (M1 y M0 muy rápido):** la segunda orden llega antes de 1000 ms, por lo que la clase la rechaza con "Orden rechazada: espere X ms entre cambios" y el actuador no cambia.
 - **Prueba de seguridad 2 (RESET con el motor encendido):** al reiniciar se ejecuta `iniciar()` y el motor y el LED quedan apagados. En la captura el mensaje de arranque aparece de nuevo después de haber encendido el motor.
 - **Prueba de inversión:** si el LED se crea por error como "activo en alto", `encender()` escribiría HIGH y el LED se apagaría, y `apagar()` escribiría LOW y el LED se encendería. Desde el arranque quedaría prendido, aunque el monitor serie diga "APAGADO".
-
-## Preguntas de reflexión
-
-### 1. ¿Por qué el LED se enciende con LOW y no con HIGH? Explica el recorrido de la corriente.
-
-El ánodo del LED está conectado a 5V y el cátodo va a D6 a través de la resistencia de 220 Ω. Cuando D6 está en LOW (0 V) hay diferencia de voltaje, y la corriente sale de 5V, pasa por el ánodo, el LED, el cátodo y la resistencia, y entra al pin D6, que la manda a tierra, por eso el LED se enciende. Cuando D6 está en HIGH (5 V), los dos lados tienen casi el mismo voltaje, no hay diferencia y no circula corriente, así que el LED se apaga.
-
-### 2. ¿Qué ventaja tiene que la regla del tiempo mínimo viva dentro de la clase y no en el loop()?
-
-Que la regla se cumple siempre, porque ninguna orden puede saltársela: todo pasa por `encender()` y `apagar()`. Además se escribe una sola vez y sirve para todos los objetos (motor y LED), y si se quiere cambiar el tiempo solo se modifica en la clase. El `loop()` queda sencillo y sin lógica de seguridad repetida.
-
-### 3. ¿Por qué un relevador real no sirve para controlar velocidad con PWM?
-
-Porque el PWM conmuta miles de veces por segundo y un relevador tiene contactos mecánicos que tardan en moverse y se desgastan con cada cambio. No alcanzaría a seguir la señal y se dañaría muy rápido. El relevador solo sirve para encender y apagar; para controlar velocidad se usa un transistor o un puente H con PWM.
-
-### 4. ¿Por qué el estado seguro es "apagado"? Da un ejemplo industrial donde convenga lo contrario (contacto NC).
-
-Porque si se va la luz o se reinicia el sistema, la carga no debe arrancar sola: un motor que se enciende de repente puede lastimar a alguien o dañar la máquina. Un ejemplo contrario es una bomba de enfriamiento o un freno de seguridad: con un contacto normalmente cerrado (NC), si falla la energía o el control, el contacto sigue cerrado y la bomba sigue funcionando para evitar un sobrecalentamiento.
-
-### 5. ¿Por qué es obligatoria la tierra común entre el portapilas y el Arduino?
-
-Porque el voltaje siempre se mide respecto a una referencia. La señal de D7 está referida al GND del Arduino y el L298N interpreta IN1 respecto a su propio GND. Si no están unidos, el L298N no tiene la misma referencia, no sabe si recibe HIGH o LOW y el motor funcionaría mal o no funcionaría.
-
-### 6. Si mañana cambiaras el L298N por un módulo de relevador real, ¿qué partes del programa tendrías que modificar?
-
-Casi nada. Solo la línea donde se crea el objeto (el pin y si es activo en alto o en bajo, porque muchos módulos de relevador son activo en bajo) y, si hace falta, el tiempo mínimo. La clase y el resto del programa siguen igual, porque la traducción HIGH/LOW está encapsulada dentro de la clase.
 
 ## Reporte
 
