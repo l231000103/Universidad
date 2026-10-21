@@ -102,6 +102,7 @@ Se dejan puestos el jumper de ENA y el jumper 5V-EN.
 ## Video del funcionamiento
 
 - [Video](Video/Readme.txt)
+- [Ver video en YouTube]((https://youtube.com/shorts/CW2_RSHPhMA))
 
 ## Resultados
 
