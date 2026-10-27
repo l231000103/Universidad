@@ -107,6 +107,7 @@ El pulsador va de D2 a GND.
 ## Video del funcionamiento
 
 - [Video](Video/Readme.txt)
+- [Ver video en YouTube]((https://youtu.be/lTGnAIjWwAw))
 
 ## Resultados
 
