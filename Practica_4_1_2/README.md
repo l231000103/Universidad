@@ -41,9 +41,15 @@ Software: Arduino IDE 2, Monitor serie a 9600 baudios y Tinkercad para la simula
   <tr>
     <td><img src="Diagrama/Tinkercad.jpeg" width="420"></td>
     <td><img src="Diagrama/Terminal (1).jpeg" width="420"></td>
+  </tr>
+  <tr>
     <td><img src="Diagrama/Simulacion (1).jpeg" width="420"></td>
     <td><img src="Diagrama/Reinicio (1).jpeg" width="420"></td>
-    <td><img src="Diagrama/monitor_serie.png" width="300"></td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center">
+      <img src="Diagrama/monitor_serie.png" width="300">
+    </td>
   </tr>
 </table>
 
