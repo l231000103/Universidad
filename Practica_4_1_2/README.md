@@ -102,16 +102,6 @@ El pulsador va de D2 a GND.
 - [Practica_4_1_2_Tinkercad.ino](Codigo/Practica_4_1_2_Tinkercad/Practica_4_1_2_Tinkercad.ino): misma lógica para simular en Tinkercad (el LED D13 hace de matriz).
 - [Practica_4_1_2_SinFiltro.ino](Codigo/Practica_4_1_2_SinFiltro/Practica_4_1_2_SinFiltro.ino): versión sin filtro para la prueba de rebote (paso 2).
 
-| Método de `Boton` | Qué hace |
-|-------------------|----------|
-| `iniciar()` | Configura el pin con `INPUT_PULLUP` |
-| `actualizar()` | Se llama en cada vuelta del `loop()`; aplica la ventana de estabilidad de 25 ms con `millis()` |
-| `fuePresionado()` | Regresa `true` una sola vez por cada pulsación real (paso de suelto a oprimido ya filtrado) |
-
-```cpp
-Boton boton(2, 25);   // pin D2, ventana de 25 ms
-```
-
 > **Nota:** el programa no usa `delay()`. La rampa también se mide con `millis()`: el PWM sube de 0 a 255 en 1.5 s, en pasos de 10 ms.
 
 ## Video del funcionamiento
@@ -132,41 +122,6 @@ Tabla de resultados (llenar con las pruebas realizadas):
 | Ventana 300 ms | 10 | | |
 
 Comparación del arranque (PWM directo a 255 contra rampa): _describir lo observado._
-
-## Preguntas de reflexión
-
-### 1. Explica con tus palabras qué es el rebote y por qué el Arduino lo detecta aunque tú no lo notes.
-
-El rebote es cuando la lámina de metal del botón choca contra los contactos y rebota varias veces antes de quedarse pegada, igual que una pelota que cae al piso. Todo pasa en unos 1 a 10 ms, así que uno no lo nota. El Arduino sí lo detecta porque lee el pin millones de veces por segundo y ve cada rebote como si fuera una pulsación distinta.
-
-### 2. ¿Por qué el contador debe sumar solo al pasar de suelto a oprimido y no en cualquier cambio de la señal?
-
-Porque una pulsación completa tiene dos cambios: al oprimir (HIGH a LOW) y al soltar (LOW a HIGH). Si el contador sumara en cualquier cambio, contaría 2 por cada pulsación aunque no hubiera rebote. Contando solo el paso de suelto a oprimido, oprimir y soltar suma exactamente 1.
-
-### 3. ¿Por qué el rebote al soltar el botón también puede sumar pulsaciones?
-
-Porque al soltar la lámina también rebota. La señal hace HIGH, LOW, HIGH, y esa bajada falsa a LOW se ve como si el botón se hubiera oprimido otra vez. Aunque el alumno esté soltando, el programa suma una pulsación de más.
-
-### 4. ¿Qué problema tendría usar delay(50) para filtrar el rebote en lugar de millis()?
-
-Que `delay(50)` detiene todo el programa durante esos 50 ms. Mientras espera, el Arduino no puede hacer nada más: no actualiza la rampa del motor, no refresca la matriz LED ni atiende otras entradas. Con `millis()` solo se compara la hora, así que el `loop()` sigue corriendo y el sistema sigue atento a todo.
-
-### 5. Según tus pruebas, ¿qué pasa si la ventana de estabilidad es muy corta? ¿Y si es muy larga?
-
-Si la ventana es muy corta (por ejemplo 2 ms) es menor que la duración de los rebotes, entonces se cuelan y el contador marca pulsaciones de más. Si es muy larga (por ejemplo 300 ms) los rebotes se filtran, pero el botón se siente lento y se pierden las pulsaciones rápidas, porque la señal no alcanza a quedarse quieta ese tiempo. Los 25 ms son suficientes para los rebotes y no se nota el retraso. _(Ajustar con los resultados medidos en la tabla.)_
-
-### 6. ¿Por qué es peligroso que un sistema reinicie con el motor encendido? Da un ejemplo industrial.
-
-Porque al volver, el sistema podría arrancar un actuador que nadie ordenó. Por ejemplo, una banda transportadora o una prensa: si el controlador se reinicia por una caída de voltaje mientras un operador está limpiando o ajustando la máquina, y al volver arranca sola, puede lastimar a la persona. Por eso el estado seguro es motor apagado hasta recibir una orden nueva.
-
-### 7. ¿Por qué la rampa de arranque ayuda a evitar caídas de voltaje?
-
-Porque un motor quieto pide mucha más corriente al arrancar que cuando ya está girando. Si el PWM pasa de 0 a 255 de golpe, el pico de corriente es muy grande y puede hacer bajar el voltaje de la fuente. Con la rampa, la velocidad sube poco a poco, el motor pide menos corriente al inicio y la caída de voltaje es menor.
-
-### 8. Menciona dos medidas de hardware que ayudan a evitar caídas de voltaje y que el software no puede reemplazar.
-
-1. Alimentar el motor con una fuente separada (las pilas 18650) y no desde el pin 5V del Arduino, con las tierras unidas.
-2. Usar cables gruesos y buenos contactos (sin cables flojos en la protoboard) y poner un capacitor cerca del motor o de la alimentación para amortiguar los picos de corriente.
 
 ## Reporte
 
