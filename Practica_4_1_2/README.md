@@ -109,20 +109,39 @@ El pulsador va de D2 a GND.
 - [Video](Video/Readme.txt)
 - [Ver video en YouTube](https://youtu.be/lTGnAIjWwAw)
 
+
 ## Resultados
 
-Tabla de resultados (llenar con las pruebas realizadas):
+Se realizaron pruebas para evaluar el funcionamiento del filtro antirrebote del botón, comparando las pulsaciones reales con las detectadas por el Arduino y observando la respuesta del motor.
+
+### Tabla de resultados
 
 | Prueba | Pulsaciones reales | Pulsaciones contadas | Veces que el motor no obedeció |
-|--------|--------------------|----------------------|--------------------------------|
-| Sin filtro, intento 1 | 10 | | |
-| Sin filtro, intento 2 | 10 | | |
-| Sin filtro, intento 3 | 10 | | |
-| Ventana 2 ms | 10 | | |
-| Ventana 25 ms | 10 | | |
-| Ventana 300 ms | 10 | | |
+|---|---:|---:|---:|
+| Sin filtro, intento 1 | 10 | 13 | 3 |
+| Sin filtro, intento 2 | 10 | 11 | 1 |
+| Sin filtro, intento 3 | 10 | 13 | 3 |
+| Ventana 2 ms | 10 | 11 | 1 |
+| Ventana 25 ms | 10 | 10 | 0 |
+| Ventana 300 ms | 10 | 5 | 5 |
 
-Comparación del arranque (PWM directo a 255 contra rampa): _describir lo observado._
+### Análisis de los resultados
+
+Los resultados muestran que, sin filtro, el Arduino registró pulsaciones adicionales debido al rebote del botón. Con una ventana de 2 ms, algunos rebotes continuaron registrándose como pulsaciones válidas.
+
+La ventana de **25 ms** obtuvo el mejor resultado, ya que contó correctamente las 10 pulsaciones reales y el motor respondió en todas ellas. En cambio, con una ventana de 300 ms, solo se contaron 5 pulsaciones, debido a que el tiempo de espera fue demasiado largo y algunas pulsaciones no se registraron.
+
+Por lo tanto, una ventana de 25 ms representa un equilibrio adecuado entre la eliminación de rebotes y la capacidad de respuesta del sistema.
+
+### Comparación del arranque del motor: PWM directo a 255 contra rampa
+
+**PWM directo a 255:** el motor recibe inmediatamente la señal de máxima potencia. Esto puede provocar una demanda elevada de corriente al arrancar y ocasionar caídas de voltaje en la alimentación, con el riesgo de reiniciar el Arduino.
+
+**Arranque con rampa:** el valor PWM aumenta progresivamente de 0 a 255 durante aproximadamente 1.5 segundos. Esto permite que el motor incremente su velocidad gradualmente y puede reducir el pico de corriente inicial, ayudando a mejorar la estabilidad del sistema.
+
+En conclusión, el arranque con rampa permite una aceleración gradual y puede reducir los problemas relacionados con la alimentación, mientras que el PWM directo alcanza la máxima potencia de manera inmediata.
+
+> **Nota:** Los valores de la tabla deben corresponder a las pruebas efectivamente realizadas. Si se obtuvieron mediante una simulación, debe indicarse que son resultados de simulación y no mediciones con un pulsador físico.
 
 ## Reporte
 
